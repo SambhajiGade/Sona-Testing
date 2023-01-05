@@ -10,26 +10,26 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'LoginPage',
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
+    path: '/Data',
+    name: 'DataPage',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: AboutView
   },
   {
-    path: '/register',
-    name: 'register',
+    path: '/Dashboard/:Project',
+    name: 'DashboardPage',
     component: RegisterView
 
   },
   {
-    path: '/AccountActivation',
-    name: 'AccountActivation',
+    path: '/Home',
+    name: 'HomePage',
     component: AccountActivation
   },
   {

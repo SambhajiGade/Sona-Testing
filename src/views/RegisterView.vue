@@ -1,344 +1,272 @@
 <template>
   <v-app>
-    <!-- TEXT AOE AND THE IMAGE  -->
+    <v-row class="mt-8" justify="center">
+      <v-col cols="2" class="pa-0">
+        <v-select
+          :items="DTList"
+          v-model="DTFilterValue"
+          label="Gear Pair"
+          class="pa-0 ml-4"
+          @change="selectedI()"
+        ></v-select>
+      </v-col>
 
+      <v-btn color="primary" class="white--text ml-3" to="/Home"
+        >HOME</v-btn
+      >
+    </v-row>
 
-    <!-- <div class="text-center">
-      <img src="../assets/prog.png" alt="" height="50" width="50" class="mt-2">
-      <h3 class="my-2 blue--text"> AOE </h3>
-
-    </div>
-    <hr class="font-weight-bold mx-2"> -->
-
-    <!-- TOOLBAR AND ITS ATTRIBUTES  -->
-
-
-    <!-- <nav class="pa-2 mx-2">
-            <v-toolbar dense flat color="blue darken-3">
-
-        YOUR CODE FOR TOOLBAR WILL GO HERE 
-
-            </v-toolbar>
-        </nav> -->
-
-<!-- 
-    <div class="text-center mt-3 orange--text">
-
-      <h2>Welcome Sign up for AOE</h2>
-      <h3><i>(Its Free)</i></h3>
-
-    </div>
-    <br>
-    <v-container class="text-left ml-15">
-      <div>
-        <v-row>
-          <v-col cols="3">
-            <v-text-field label="First Name" single-line outlined></v-text-field>
-          </v-col>
-          <v-col cols="3">
-            <v-text-field label="Middle Name" single-line outlined></v-text-field>
-          </v-col>
-          <v-col cols="3">
-            <v-text-field label="Last Name" single-line outlined></v-text-field>
-          </v-col>
-
-        </v-row>
-        <v-row>
-          <v-col cols="4">
-            <v-text-field label="Mobile No." single-line outlined></v-text-field>
-          </v-col>
-          <v-col cols="4">
-            <v-text-field label="Email" single-line outlined></v-text-field>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col cols="4">
-            <v-text-field
-            :append-icon="show3 ? 'mdi-eye' : 'mdi-eye-off'"
-            :rules="[rules.required, rules.min]"
-            :type="show3 ? 'text' : 'password'"
-            name="input-10-2"
-            label="Password"
-            hint="At least 8 characters"
-            class="input-group--focused"
-            @click:append="show3 = !show3"
-            outlined
-          ></v-text-field>
-          </v-col>
-          <v-col cols="4">
-            <v-text-field
-            :append-icon="show4 ? 'mdi-eye' : 'mdi-eye-off'"
-            :rules="[rules.required, rules.min]"
-            :type="show3 ? 'text' : 'password'"
-            name="input-10-2"
-            label="Confirm Password"
-            hint="At least 8 characters"
-            class="input-group--focused"
-            @click:append="show4 = !show4"
-            outlined
-          ></v-text-field>
-          </v-col>
-        </v-row>
-      </div>
-      <br>
-     <div class="text-right orange-text">
-
-      <span >Already have account? <b> <u> Sign in </u> </b> </span>
-
-      <v-btn
-              color="success"
-              dark
-              large
+    <body class="mt-5 ml-1">
+      <!-- <hr /> -->
+      <table id="table1" cellspacing="0" border="1">
+        <tbody>
+          <tr>
+            <td
+              rowspan="2"
+              style="
+                text-align: center;
+                width: 12%;
+                border: 1px solid black;
+                background-color: #d5d8dc;
+              "
             >
-              Register
-            </v-btn>
+              Title
+            </td>
+            <td
+              rowspan="2"
+              style="
+                text-align: center;
+                width: 12%;
+                border: 1px solid black;
+                background-color: #d5d8dc;
+              "
+            >
+              GEAR PAIR
+            </td>
+            <td
+              rowspan="2"
+              style="
+                text-align: center;
+                width: 12%;
+                border: 1px solid black;
+                background-color: #d5d8dc;
+              "
+            >
+              Differential Torque
+            </td>
+            <td
+              colspan="3"
+              style="
+                text-align: center;
+                width: 27%;
+                border: 1px solid black;
+                background-color: #d5d8dc;
+              "
+            >
+              Max Stress Gear (Mpa)
+            </td>
+            <td
+              colspan="3"
+              style="
+                text-align: center;
+                width: 27%;
+                border: 1px solid black;
+                background-color: #d5d8dc;
+              "
+            >
+              Max Stress Pinion (Mpa)
+            </td>
+          </tr>
+          <tr id="row2">
+            <td
+              style="
+                text-align: center;
+                background-color: #d5d8dc;
+                min-width: 100px;
+              "
+            >
+              <u> Contact Stress </u>
+            </td>
+            <td
+              style="
+                text-align: center;
 
-     </div>
-    </v-container> -->
+                background-color: #d5d8dc;
+                min-width: 100px;
+              "
+            >
+              <u> Bending Stress Tensile </u>
+            </td>
+            <td
+              style="
+                text-align: center;
 
+                background-color: #d5d8dc;
+                min-width: 100px;
+              "
+            >
+              <u> Bending Stress Compressive </u>
+            </td>
+            <td
+              style="
+                text-align: center;
 
+                background-color: #d5d8dc;
+                min-width: 100px;
+              "
+            >
+              <u> Contact Stress </u>
+            </td>
+            <td
+              style="
+                text-align: center;
 
+                background-color: #d5d8dc;
+                min-width: 100px;
+              "
+            >
+              <u> Bending Stress Tensile </u>
+            </td>
+            <td
+              style="
+                text-align: center;
 
-    <body>
-        <!-- <hr /> -->
-        <table id="table1" cellspacing="0"  border="1" >
-          <tbody  >
-            <tr   >
-              <td
-                rowspan="2"
-                style="
-                  text-align: center;
-                  width: 12%;
-                  border:1px solid black;
-                  background-color: #D5D8DC;
-                "
-              >
-                Title
-              </td>
-              <td
-                rowspan="2"
-                style="
-                  text-align: center;
-                  width: 12%;
-                  border:1px solid black;
-                  background-color: #D5D8DC;
-                "
-              >
-                GEAR PAIR
-              </td>
-              <td
-                rowspan="2"
-                style="
-                  text-align: center;
-                  width: 12%;
-                  border:1px solid black;
-                  background-color: #D5D8DC;
-                "
-              >
-                Differential Torque
-              </td>
-              <td
-                colspan="3"
-                style="text-align: center; 
-                 width: 27%;
-                  border:1px solid black;
-                  background-color: #D5D8DC;
-                "
-              >
-                Max Stress Gear (Mpa)
-              </td>
-              <td
-                colspan="3"
-                style="text-align: center;
-                 width: 27%;
-                  border:1px solid black;
-                  background-color: #D5D8DC;
-                 "
-              >
-                Max Stress Pinion (Mpa)
-              </td>
-            </tr>
-            <tr   id="row2">
-              <td
-                style="
-                  text-align: center;
-                  background-color: #D5D8DC;
-                  min-width: 100px;
-                "
-              >
-                <u> Contact Stress </u>
-              </td>
-              <td
-                style="
-                  text-align: center;
-                  
-                  background-color: #D5D8DC;
-                  min-width: 100px;
-                "
-              >
-                <u> Bending Stress Tensile </u>
-              </td>
-              <td
-                style="
-                  text-align: center;
-                  
-                  background-color: #D5D8DC;
-                  min-width: 100px;
-                "
-              >
-                <u> Bending Stress Compressive </u>
-              </td>
-              <td
-                style="
-                  text-align: center;
-                  
-                  background-color: #D5D8DC;
-                  min-width: 100px;
-                "
-              >
-                <u> Contact Stress </u>
-              </td>
-              <td
-                style="
-                  text-align: center;
-                  
-                  background-color: #D5D8DC;
-                  min-width: 100px;
-                "
-              >
-                <u> Bending Stress Tensile </u>
-              </td>
-              <td
-                style="
-                  text-align: center;
-                  
-                  background-color: #D5D8DC;
-                  min-width: 100px;
-                "
-              >
-                <u> Bending Stress Compressive </u>
-              </td>
-            </tr>
-            <tr>
-              <td
-                id="a"
-                style="
-                  text-align: center;
-                  background-color: rgb(158, 185, 244);
-                  min-width: 100px;
-                "
-              ></td>
-              <td
-                id="b"
-                style="
-                  text-align: center;
-                  background-color: rgb(158, 185, 244);
-                  min-width: 100px;
-                "
-              ></td>
-              <td
-                id="c"
-                style="
-                  text-align: center;
-                  background-color: rgb(158, 185, 244);
-                  min-width: 100px;
-                "
-              ></td>
-              <td
-                id="d"
-                style="
-                  text-align: center;
-                  background-color: rgb(158, 185, 244);
-                  min-width: 100px;
-                "
-              ></td>
-              <td
-                id="e"
-                style="
-                  text-align: center;
-                  background-color: rgb(158, 185, 244);
-                  min-width: 100px;
-                "
-              ></td>
-              <td
-                id="f"
-                style="
-                  text-align: center;
-                  background-color: rgb(158, 185, 244);
-                  min-width: 100px;
-                "
-              ></td>
-              <td
-                id="g"
-                style="
-                  text-align: center;
-                  background-color: rgb(158, 185, 244);
-                  min-width: 100px;
-                "
-              ></td>
-              <td
-                id="h"
-                style="
-                  text-align: center;
-                  background-color: rgb(158, 185, 244);
-                  min-width: 100px;
-                "
-              ></td>
-              <td
-                id="i"
-                style="
-                  text-align: center;
-                  background-color: rgb(158, 185, 244);
-                  min-width: 100px;
-                "
-              ></td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- <hr /> -->
-      </body>
-    
-<v-card>
-  <div
-      id="chartContainer1"
-      style="height: 300px; width: 45%; display: inline-block"
-    ></div>
-    <div
-      id="chartContainer2"
-      style="height: 300px; width: 45%; display: inline-block"
-    ></div>
-</v-card>
-  
+                background-color: #d5d8dc;
+                min-width: 100px;
+              "
+            >
+              <u> Bending Stress Compressive </u>
+            </td>
+          </tr>
+          <tr>
+            <td
+              id="a"
+              style="
+                text-align: center;
+                background-color: rgb(158, 185, 244);
+                min-width: 100px;
+              "
+            ></td>
+            <td
+              id="b"
+              style="
+                text-align: center;
+                background-color: rgb(158, 185, 244);
+                min-width: 100px;
+              "
+            ></td>
+            <td
+              id="c"
+              style="
+                text-align: center;
+                background-color: rgb(158, 185, 244);
+                min-width: 100px;
+              "
+            ></td>
+            <td
+              id="d"
+              style="
+                text-align: center;
+                background-color: rgb(158, 185, 244);
+                min-width: 100px;
+              "
+            ></td>
+            <td
+              id="e"
+              style="
+                text-align: center;
+                background-color: rgb(158, 185, 244);
+                min-width: 100px;
+              "
+            ></td>
+            <td
+              id="f"
+              style="
+                text-align: center;
+                background-color: rgb(158, 185, 244);
+                min-width: 100px;
+              "
+            ></td>
+            <td
+              id="g"
+              style="
+                text-align: center;
+                background-color: rgb(158, 185, 244);
+                min-width: 100px;
+              "
+            ></td>
+            <td
+              id="h"
+              style="
+                text-align: center;
+                background-color: rgb(158, 185, 244);
+                min-width: 100px;
+              "
+            ></td>
+            <td
+              id="i"
+              style="
+                text-align: center;
+                background-color: rgb(158, 185, 244);
+                min-width: 100px;
+              "
+            ></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <hr /> -->
+    </body>
 
+    <v-card>
+      <div
+        id="chartContainer1"
+        style="height: 300px; width: 45%; display: inline-block"
+      ></div>
+      <div
+        id="chartContainer2"
+        style="height: 300px; width: 45%; display: inline-block"
+      ></div>
+    </v-card>
   </v-app>
 </template>
-  
-<script>
 
-import axios from 'axios'
+<script>
+import axios from "axios";
 
 var CanvasJS = require("./canvasjs.min.js");
 CanvasJS = CanvasJS.Chart ? CanvasJS : window.CanvasJS;
 
-  export default {
-    data () {
-      return {
-      SAM:[],
-        // rules: {
-        //   required: value => !!value || 'Required.',
-        //   min: v => v.length >= 8 || 'Min 8 characters',
-        //   emailMatch: () => (`The email and password you entered don't match`),
-        // },
-      }
-    },
+export default {
+  data() {
+    return {
+      SAM: [],
+      DTList: [
+        // { text: "All", value: null },
 
-    mounted(){
-      this.getapicall();
-      this.Sambhaji()
-    },
-    methods:{
-      async getapicall() {
+        { text: "JJ01-A1B1", value: "JJ01-A1B1" },
+        { text: "JJ01-A1B2", value: "JJ01-A1B2" },
+        { text: "JJ01-A1B3", value: "JJ01-A1B3" },
+        { text: "JJ01-A1B4", value: "JJ01-A1B4" },
+      ],
+
+      // Filter models.
+
+      DTFilterValue: this.$route.params.Project,
+    };
+  },
+
+  mounted() {
+    this.getapicall();
+    // this.Sambhaji();
+  },
+  methods: {
+
+selectedI(){
+console.log("selected item is : ", this.DTFilterValue)
+this.getapicall();
+},
+
+    async getapicall() {
       //  fetch('http://localhost:3000/database1')
       //  .then(res=>res.json())
       //  .then(d =>this.SAM=d)
@@ -348,32 +276,28 @@ CanvasJS = CanvasJS.Chart ? CanvasJS : window.CanvasJS;
       console.log("previous postdata : ", this.postdata);
 
       await axios
-        .get("http://localhost:3000/DATA1")
+      .get("http://localhost:3000/DATA1?Project="+this.DTFilterValue)
         .then((resp) => {
           this.SAM = resp.data;
           console.log("this.sam : ", this.SAM);
-
-          this.Sambhaji()
-          
+  // this.DTFilterValue=""
+          this.Sambhaji();
         })
         .catch((err) => {
           console.log("Error : ", err);
         });
-    },  
-
+    },
 
     Sambhaji() {
       let Data = [];
-    // let table2=document.getElementById("table1");
-    //   table2.style.visibility="visible";
+      // let table2=document.getElementById("table1");
+      //   table2.style.visibility="visible";
 
-//       let Row1 = document.getElementById("row1")
-//       let Row2 = document.getElementById("row2")
+      //       let Row1 = document.getElementById("row1")
+      //       let Row2 = document.getElementById("row2")
 
-
-// Row1.style.visibility="visible";
-// Row2.style.visibility="visible";
-
+      // Row1.style.visibility="visible";
+      // Row2.style.visibility="visible";
 
       document.getElementById("a").innerHTML = "";
       document.getElementById("b").innerHTML = "";
@@ -588,6 +512,17 @@ CanvasJS = CanvasJS.Chart ? CanvasJS : window.CanvasJS;
         document.getElementById("i").innerHTML += Data[i][8] + "</br>";
       }
 
+      Data.sort(sortFunction);
+
+function sortFunction(a, b) {
+    if (a[0] === b[0]) {
+        return 0;
+    }
+    else {
+        return (a[0] < b[0]) ? -1 : 1;
+    }
+}
+
       let index = 0;
       let man1 = [];
       let man2 = [];
@@ -601,25 +536,25 @@ CanvasJS = CanvasJS.Chart ? CanvasJS : window.CanvasJS;
         index++;
       }
 
-      mcs1 = mcs1.sort((a, b) => {
-        return Number(a) < Number(b) ? -1 : Number(a) > Number(b) ? 1 : 0;
-      });
-      man1 = man1.sort((a, b) => {
-        return Number(a) < Number(b) ? -1 : Number(a) > Number(b) ? 1 : 0;
-      });
-      man2 = man2.sort((a, b) => {
-        return Number(a) < Number(b) ? -1 : Number(a) > Number(b) ? 1 : 0;
-      });
+      // mcs1 = mcs1.sort((a, b) => {
+      //   return Number(a) < Number(b) ? -1 : Number(a) > Number(b) ? 1 : 0;
+      // });
+      // man1 = man1.sort((a, b) => {
+      //   return Number(a) < Number(b) ? -1 : Number(a) > Number(b) ? 1 : 0;
+      // });
+      // man2 = man2.sort((a, b) => {
+      //   return Number(a) < Number(b) ? -1 : Number(a) > Number(b) ? 1 : 0;
+      // });
 
-      mcs2 = mcs2.sort((a, b) => {
-        return Number(a) < Number(b) ? -1 : Number(a) > Number(b) ? 1 : 0;
-      });
-      man3 = man3.sort((a, b) => {
-        return Number(a) < Number(b) ? -1 : Number(a) > Number(b) ? 1 : 0;
-      });
-      man4 = man4.sort((a, b) => {
-        return Number(a) < Number(b) ? -1 : Number(a) > Number(b) ? 1 : 0;
-      });
+      // mcs2 = mcs2.sort((a, b) => {
+      //   return Number(a) < Number(b) ? -1 : Number(a) > Number(b) ? 1 : 0;
+      // });
+      // man3 = man3.sort((a, b) => {
+      //   return Number(a) < Number(b) ? -1 : Number(a) > Number(b) ? 1 : 0;
+      // });
+      // man4 = man4.sort((a, b) => {
+      //   return Number(a) < Number(b) ? -1 : Number(a) > Number(b) ? 1 : 0;
+      // });
 
       let s1 = mcs1.map((i) => Number(i));
       let s2 = man1.map((i) => Number(i));
@@ -628,39 +563,36 @@ CanvasJS = CanvasJS.Chart ? CanvasJS : window.CanvasJS;
       let s5 = man3.map((i) => Number(i));
       let s6 = man4.map((i) => Number(i));
 
+      let SambhajiGade1 = [];
+      let SambhajiGade2 = [];
+      for (let z = 0; z < man1.length; z++) {
+        SambhajiGade1.push({
+          type: "column",
+          name: Data[z][0],
 
+          legendText: Data[z][0],
+          showInLegend: true,
+          dataPoints: [
+            { label: "Contact..", y: s1[z] },
+            { label: "Bending..", y: s2[z] },
+            { label: "Bending..", y: s3[z] },
+          ],
+        });
+      }
 
-      let SambhajiGade1=[]
-      let SambhajiGade2=[]
-for(let z=0;z<man1.length;z++){
-  SambhajiGade1.push({
-    type: "column",
-              name: Data[z][0],
-             
-              legendText: Data[z][0],
-              showInLegend: true,
-              dataPoints: [
-                { label: "Contact..", y: s1[z] },
-                { label: "Bending..", y: s2[z] },
-                { label: "Bending..", y: s3[z] },
-              ],
-  })
-}
-
-
-for(let z=0;z<man1.length;z++){
-  SambhajiGade2.push({
-    type: "column",
-              name: Data[z][0],
-              legendText: Data[z][0],
-              showInLegend: true,
-              dataPoints: [
-                { label: "Contact..", y: s4[z] },
-                { label: "Bending..", y: s5[z] },
-                { label: "Bending..", y: s6[z] },
-              ],
-  })
-}
+      for (let z = 0; z < man1.length; z++) {
+        SambhajiGade2.push({
+          type: "column",
+          name: Data[z][0],
+          legendText: Data[z][0],
+          showInLegend: true,
+          dataPoints: [
+            { label: "Contact..", y: s4[z] },
+            { label: "Bending..", y: s5[z] },
+            { label: "Bending..", y: s6[z] },
+          ],
+        });
+      }
 
       console.log("DataArray : ", Data);
       var chart = new CanvasJS.Chart("chartContainer1", {
@@ -683,7 +615,7 @@ for(let z=0;z<man1.length;z++){
           cursor: "pointer",
           itemclick: toggleDataSeries,
         },
-        data:SambhajiGade1,
+        data: SambhajiGade1,
         // data: [
         //   {
         //     type: "column",
@@ -808,7 +740,7 @@ for(let z=0;z<man1.length;z++){
           itemclick: toggleDataSeries1,
         },
 
-        data:SambhajiGade2,
+        data: SambhajiGade2,
 
         // data: [
         //   {
@@ -913,7 +845,6 @@ for(let z=0;z<man1.length;z++){
         chart1.render();
       }
     },
-    },
-  }
+  },
+};
 </script>
-  
